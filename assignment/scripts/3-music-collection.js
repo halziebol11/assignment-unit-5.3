@@ -18,4 +18,11 @@ console.log(addToCollection('Boogy Woogy', 'Bopper', 1992));
 console.log(addToCollection('Sad Bops for Sad Boppers', 'Bopper', 1993));
 console.log(addToCollection('R We Boppin?', 'Bopper', 1994));
 console.log(addToCollection('Cats R Sick', 'Cat Dudes', 1989));
-console.log(collection)
+console.log(collection);
+
+function showCollection (array){
+    console.log(collection.length);
+    for (let i = 0; i<collection.length, i++){
+        console.log(`${collection[i].title} by ${collection[i].artist} published in ${collection[i].yearPublished}`);
+    }
+}// end of showCollection
