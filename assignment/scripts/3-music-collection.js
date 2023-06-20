@@ -26,8 +26,16 @@ console.log(collection);
 function showCollection(array) {
     console.log(collection.length);
     for (let i = 0; i<collection.length; i++){
-        console.log(`${collection[i].title} by ${collection[i].artist} published in ${collection[i].yearPublished}`);
-    }
+        if (collection[i].tracks == undefined){
+            console.log(`${(collection[i].title)} by ${collection[i].artist} published in ${collection[i].yearPublished}`);
+        }
+        else{
+            console.log(`${collection[i].title} by ${collection[i].artist} published in ${collection[i].yearPublished}:`);
+            for (j = 0; j<collection[i].tracks.length; j++) {
+                console.log(`${j+1}. ${collection[i].tracks[j].name}: ${collection[i].tracks[j].duration}`);
+            }
+        }
+    }   
 }// end of showCollection
 
 //test showCollection
