@@ -36,9 +36,13 @@ showCollection(collection);
 function findByArtist(artist) {
     let resultsByArtist = [];
     for (i=0; i<collection.length; i++){
-        if (collection[i].artist = artist){
+        if (collection[i].artist == artist){
             resultsByArtist.push(collection[i])
         }
     }
     return resultsByArtist;
 } //end of findByArtist
+
+//test findByArtist
+console.log(findByArtist("Bopper"));
+console.log(findByArtist("Dog Dudes"));
