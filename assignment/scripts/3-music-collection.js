@@ -51,18 +51,20 @@ console.log(findByArtist("Dog Dudes"));
 //function to search collection
 function search(searchObject) {
     let searchResults = [];
-    if (Object.keys(searchObject).length == 0){
+    if (Object.keys(searchObject).length == 0) {
         return collection;
     }
-    else if (searchObject.trackName.length !== 0) {
-        for (i=0; i<collection.length; i++){
-            for (j = 0; j<collection[i].tracks.length; j++){
-                if (collection[i].tracks[j].name == searchObject.trackName){
-                searchResults.push(collection[i])
+    else if (searchObject.trackName !== "") {
+        for (i=0; i<collection.length; i++) {
+            if(collection[i].tracks !== undefined) {
+                for (j = 0; j<collection[i].tracks.length; j++) {
+                    if (collection[i].tracks[j].name == searchObject.trackName){
+                    searchResults.push(collection[i])
+                    }
                 }
             }
-        return searchResults;
         }
+        return searchResults;
     }
     else {
         for (i=0; i<collection.length; i++){
@@ -75,7 +77,7 @@ function search(searchObject) {
 }//end of search function
 
 //test search function
-console.log(search({artist: 'Bopper', year: 1992}));
+console.log(search({artist: 'Bopper', year: 1992, trackName: "t2"}));
 console.log(search({artist: 'Goober', year: 1992}));
 console.log(search({}));
-console.log({trackName: "t1"});
+console.log(search({trackName: "t2"}));
