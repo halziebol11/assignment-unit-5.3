@@ -55,6 +55,15 @@ function search(searchObject) {
             searchResults.push(collection[i])
         }
     }
-    return searchResults
+    if (searchObject === {}|| searchObject === ""){
+        return collection;
+    }
+    else {
+    return searchResults;
+    }
 } //end of search function
 
+//test search function
+console.log(search({artist: 'Bopper', year: 1992}));
+console.log(search({artist: 'Goober', year: 1992}));
+console.log(search({}));
