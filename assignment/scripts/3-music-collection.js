@@ -49,19 +49,19 @@ console.log(findByArtist("Dog Dudes"));
 
 //function to search collection
 function search(searchObject) {
+    if (Object.keys(searchObject).length == 0){
+        return collection;
+    }
+    else {
     let searchResults = [];
     for (i=0; i<collection.length; i++){
         if (collection[i].artist == searchObject.artist && collection[i].yearPublished == searchObject.year){
             searchResults.push(collection[i])
         }
     }
-    if (searchObject === {}|| searchObject === ""){
-        return collection;
-    }
-    else {
     return searchResults;
     }
-} //end of search function
+}//end of search function
 
 //test search function
 console.log(search({artist: 'Bopper', year: 1992}));
