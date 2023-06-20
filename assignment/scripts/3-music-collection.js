@@ -25,14 +25,19 @@ console.log(collection);
 //function to show albums in collection
 function showCollection(array) {
     console.log(collection.length);
-    for (let i = 0; i<collection.length; i++){
-        if (collection[i].tracks == undefined){
-            console.log(`${(collection[i].title)} by ${collection[i].artist} published in ${collection[i].yearPublished}`);
+    for (let i = 0; i<collection.length; i++) {
+        if (collection[i].tracks == undefined) {
+            let newTitle = collection[i].title.toUpperCase();
+            let newArtist = collection[i].artist.toUpperCase();
+            console.log(`${newTitle} by ${newArtist}, published in ${collection[i].yearPublished}`);
         }
-        else{
-            console.log(`${collection[i].title} by ${collection[i].artist} published in ${collection[i].yearPublished}:`);
+        else {
+            let newTitle = collection[i].title.toUpperCase();
+            let newArtist = collection[i].artist.toUpperCase();
+            console.log(`${newTitle} by ${newArtist}, published in ${collection[i].yearPublished}:`);
             for (j = 0; j<collection[i].tracks.length; j++) {
-                console.log(`${j+1}. ${collection[i].tracks[j].name}: ${collection[i].tracks[j].duration}`);
+                let newName = collection[i].tracks[j].name.toUpperCase();
+                console.log(`${j+1}. ${newName}: ${collection[i].tracks[j].duration}`);
             }
         }
     }   
@@ -44,8 +49,8 @@ showCollection(collection);
 //function to show albums by a given artist
 function findByArtist(artist) {
     let resultsByArtist = [];
-    for (i=0; i<collection.length; i++){
-        if (collection[i].artist == artist){
+    for (i=0; i<collection.length; i++) {
+        if (collection[i].artist == artist) {
             resultsByArtist.push(collection[i])
         }
     }
@@ -75,8 +80,8 @@ function search(searchObject) {
         return searchResults;
     }
     else {
-        for (i=0; i<collection.length; i++){
-            if (collection[i].artist == searchObject.artist && collection[i].yearPublished == searchObject.year){
+        for (i=0; i<collection.length; i++) {
+            if (collection[i].artist == searchObject.artist && collection[i].yearPublished == searchObject.year) {
                 searchResults.push(collection[i])
             }
         }
