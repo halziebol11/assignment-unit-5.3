@@ -2,21 +2,22 @@ console.log('***** Music Collection *****')
 let collection = [];
 
 //function to add albums to collection
-function addToCollection(title, artist, yearPublished) {
+function addToCollection(title, artist, yearPublished, tracks) {
     let Object = {
         title: title,
         artist: artist,
         yearPublished: yearPublished,
+        tracks: tracks
     }
     collection.push(Object);
     return Object
 }//end of addToCollection
 
 //test addToCollection function
-console.log(addToCollection('Happy Bops', 'Early Boppers', 1990));
+console.log(addToCollection('Happy Bops', 'Early Boppers', 1990, [{name: "t1", duration: 12}, {name: "t2", duration: 8}]));
 console.log(addToCollection('Bippity Boppity', 'Bopper', 1991));
 console.log(addToCollection('Boogy Woogy', 'Bopper', 1992));
-console.log(addToCollection('Sad Bops for Sad Boppers', 'Bopper', 1993));
+console.log(addToCollection('Sad Bops for Sad Boppers', 'Bopper', 1993, [{name: "BopOnTop", duration: 12}, {name: "t2", duration: 8}]));
 console.log(addToCollection('R We Boppin?', 'Bopper', 1994));
 console.log(addToCollection('Cats R Sick', 'Cat Dudes', 1989));
 console.log(collection);
@@ -49,17 +50,27 @@ console.log(findByArtist("Dog Dudes"));
 
 //function to search collection
 function search(searchObject) {
+    let searchResults = [];
     if (Object.keys(searchObject).length == 0){
         return collection;
     }
-    else {
-    let searchResults = [];
-    for (i=0; i<collection.length; i++){
-        if (collection[i].artist == searchObject.artist && collection[i].yearPublished == searchObject.year){
-            searchResults.push(collection[i])
+    else if (searchObject.trackName.length !== 0) {
+        for (i=0; i<collection.length; i++){
+            for (j = 0; j<collection[i].tracks.length; j++){
+                if (collection[i].tracks[j].name == searchObject.trackName){
+                searchResults.push(collection[i])
+                }
+            }
+        return searchResults;
         }
     }
-    return searchResults;
+    else {
+        for (i=0; i<collection.length; i++){
+            if (collection[i].artist == searchObject.artist && collection[i].yearPublished == searchObject.year){
+                searchResults.push(collection[i])
+            }
+        }
+        return searchResults;
     }
 }//end of search function
 
@@ -67,3 +78,4 @@ function search(searchObject) {
 console.log(search({artist: 'Bopper', year: 1992}));
 console.log(search({artist: 'Goober', year: 1992}));
 console.log(search({}));
+console.log({trackName: "t1"});
