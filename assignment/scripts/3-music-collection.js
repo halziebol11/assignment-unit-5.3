@@ -46,3 +46,15 @@ function findByArtist(artist) {
 //test findByArtist
 console.log(findByArtist("Bopper"));
 console.log(findByArtist("Dog Dudes"));
+
+//function to search collection
+function search(searchObject) {
+    let searchResults = [];
+    for (i=0; i<collection.length; i++){
+        if (collection[i].artist == searchObject.artist && collection[i].yearPublished == searchObject.year){
+            searchResults.push(collection[i])
+        }
+    }
+    return searchResults
+} //end of search function
+
